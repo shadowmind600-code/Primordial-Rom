@@ -26,8 +26,8 @@ source "$(pwd)/scripts/debloat.sh"
 source "$(pwd)/scripts/git_utils.sh"
 source "$(pwd)/scripts/PrimordialRom.sh"
 
-REPO="SN-Abdullah-Al-Noman/QuantumROM"
-BRANCH="Devices"
+REPO="shadowmind600-code/Primordial-Rom-Devices"
+BRANCH="main"
 
 if [ "$STOCK_DEVICE" != "None" ]; then
     if ! curl -fsSL -H "Accept: application/vnd.github+json" \
@@ -37,8 +37,8 @@ if [ "$STOCK_DEVICE" != "None" ]; then
     fi
 
 	echo "✅ Device supported: $STOCK_DEVICE"
-    GIT_SPARSE_DOWNLOAD "SN-Abdullah-Al-Noman/QuantumROM" "Devices" "$STOCK_DEVICE" "$(pwd)/PrimordialROM/Devices/$STOCK_DEVICE"
-else
+    GIT_SPARSE_DOWNLOAD "$REPO" "$BRANCH" "$STOCK_DEVICE" "$(pwd)/PrimordialROM/Devices/$STOCK_DEVICE"
+	else
     echo "ℹ️ STOCK_DEVICE is set to None."
 fi
 
