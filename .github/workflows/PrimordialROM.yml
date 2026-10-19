@@ -16,7 +16,7 @@ on:
       TARGET_DEVICE:
         description: "TARGET_DEVICE_MODEL."
         required: true
-        default: "SM-A346E"
+        default: "SM-A245F"
 
       TARGET_DEVICE_CSC_OR_DOWNLOAD_LINK:
         description: "Input target device CSC code or direct download link."
@@ -125,8 +125,8 @@ jobs:
 
       - name: Validate STOCK_DEVICE - ${{ inputs.STOCK_DEVICE }}
         run: |
-          REPO="SN-Abdullah-Al-Noman/QuantumROM"
-          BRANCH="Devices"
+          REPO="shadowmind600-code/Primordial-Rom-Devices"
+          BRANCH="main"
 
           source "$(pwd)/scripts/git_utils.sh"
 
@@ -139,8 +139,8 @@ jobs:
               fi
 
               echo "✅ Device supported: $STOCK_DEVICE"
-              GIT_SPARSE_DOWNLOAD "SN-Abdullah-Al-Noman/QuantumROM" "Devices" "$STOCK_DEVICE" \
-                  "$(pwd)/PrimordialROM/Devices/$STOCK_DEVICE"
+              GIT_SPARSE_DOWNLOAD "$REPO" "$BRANCH" "$STOCK_DEVICE" \
+                 "$(pwd)/PrimordialROM/Devices/$STOCK_DEVICE"
           else
               echo "ℹ️ STOCK_DEVICE is set to None."
           fi
