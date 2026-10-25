@@ -6,7 +6,7 @@ on:
       STOCK_DEVICE:
         description: "Your own device model or None"
         required: true
-        default: "SM-A225F"
+        default: "SM-E225F"
 
       USE_UI_8_TETHERING_APEX:
         description: "Set True if your kernel BPF version is 5.4 (lower than 5.10)."
@@ -300,7 +300,7 @@ jobs:
 
       - name: Compress all .img & make zip file before upload - - ${{ inputs.COMPRESS_IMG }}
         run: |
-          echo "BUILD_TIME=$(TZ='Asia/Dhaka' date '+%Y-%m-%d %I:%M:%S %p UTC+6')" | tee -a "$GITHUB_ENV"
+          echo "BUILD_TIME=$(TZ='Asia/Kolkata' date '+%Y-%m-%d %I:%M:%S %p IST (UTC+5:30)')" | tee -a "$GITHUB_ENV"
           ZIP_NAME="${{ inputs.TARGET_DEVICE }}_Port_For_${{ inputs.STOCK_DEVICE }}.zip"
           ZIP_PATH="$OUT_DIR/$ZIP_NAME"
 
