@@ -2464,7 +2464,15 @@ APPLY_CUSTOM_FEATURES() {
 
 	echo -e "- Adding build prop tweak."
 
-    BUILD_PROP "$EXTRACTED_FIRM_DIR" "system" "ro.build.display.id" "by PrimordialRom(Pritam Mondal)"
+        local SAMSUNG_BUILD
+        SAMSUNG_BUILD="$(GET_PROP "$EXTRACTED_FIRM_DIR" "system" "ro.build.version.incremental")"
+
+    if [ -n "$SAMSUNG_BUILD" ]; then
+        BUILD_PROP "$EXTRACTED_FIRM_DIR" "system" "ro.build.display.id" "${SAMSUNG_BUILD} by PrimordialRom(Pritam Mondal)"
+    else
+        echo "- Warning: Samsung build number not found."
+        BUILD_PROP "$EXTRACTED_FIRM_DIR" "system" "ro.build.display.id" "by PrimordialRom(Pritam Mondal)"
+    fi
 	BUILD_PROP "$EXTRACTED_FIRM_DIR" "system" "ro.product.locale" "en-US"
     BUILD_PROP "$EXTRACTED_FIRM_DIR" "system" "fw.max_users" "5"
     BUILD_PROP "$EXTRACTED_FIRM_DIR" "system" "fw.show_multiuserui" "1"
